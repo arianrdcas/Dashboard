@@ -1,4 +1,5 @@
 import { FC, ReactNode } from "react";
+import { Chart } from "./chart";
 
 interface CardProps {
   icon?: ReactNode;
@@ -16,8 +17,9 @@ const Card: FC<CardProps> = ({ icon, cuantiti, descriptions }) => {
       </div>
 
       <div>
-        <div>Chart</div>
-        <p>Number</p>
+        <div>
+          <Chart />
+        </div>
       </div>
     </div>
   );
