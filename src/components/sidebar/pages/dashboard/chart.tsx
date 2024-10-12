@@ -1,5 +1,3 @@
-
-
 import { TrendingUp } from "lucide-react";
 import { Pie, PieChart } from "recharts";
 
@@ -64,7 +62,7 @@ export function Chart() {
       <CardContent className="flex-1 pb-0">
         <ChartContainer
           config={chartConfig}
-          className="mx-auto aspect-square max-h-[250px]"
+          className="mx-auto aspect-square max-h-[60px] max-w-[60px]"
         >
           <PieChart>
             <ChartTooltip
@@ -75,18 +73,15 @@ export function Chart() {
               data={chartData}
               dataKey="visitors"
               nameKey="browser"
-              innerRadius={30}
+              innerRadius={20}
+              outerRadius={30}
             />
           </PieChart>
         </ChartContainer>
       </CardContent>
       <CardFooter className="flex-col gap-2 text-sm">
-        <div className="flex items-center gap-2 font-medium leading-none">
-           
-        </div>
-        <div className="leading-none text-muted-foreground">
-          
-        </div>
+        <div className="flex items-center gap-2 font-medium leading-none"></div>
+        <div className="leading-none text-muted-foreground"></div>
       </CardFooter>
     </Card>
   );

@@ -15,7 +15,7 @@ const Dashboard: FC = () => {
           cuantiti={5}
           descriptions="Emails recibidos"
         />
-        {/* <Card
+        <Card
           icon={<PointOfSaleOutlinedIcon />}
           cuantiti={5}
           descriptions="Ventas"
@@ -24,8 +24,7 @@ const Dashboard: FC = () => {
           icon={<PersonAddOutlinedIcon />}
           cuantiti={5}
           descriptions="Nuevos usuarios"
-        /> */}
-        
+        />
       </div>
     </>
   );
