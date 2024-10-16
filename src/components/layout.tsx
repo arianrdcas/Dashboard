@@ -16,7 +16,7 @@ const Layout: React.FC<LayoutProps> = () => {
         <Sidebar />
       </div>
       {/* Navbar en la segunda columna de la primera fila */}
-      <div className="bg-gray-800 col-start-2 row-start-1">
+      <div className="bg-gray-800 col-start-2 row-start-1 h-16">
         <Navbar />
       </div>
       {/* Main Content en la segunda columna de la segunda fila */}

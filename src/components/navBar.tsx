@@ -18,7 +18,7 @@ const Navbar: FC = () => {
   }, [isDarkTheme]);
 
   return (
-    <div className="flex justify-between p-3 items-center relative">
+    <div className="flex justify-between px-3 py-2 items-center relative">
       {/* Contenido del Navbar */}
       <div className="relative">
         <SearchOutlinedIcon className="absolute right-5 top-1/2 transform -translate-y-1/2 text-white " />

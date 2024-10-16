@@ -1,4 +1,4 @@
-import { TrendingUp } from "lucide-react";
+//import { TrendingUp } from "lucide-react";
 import { Pie, PieChart } from "recharts";
 
 import {
@@ -54,12 +54,12 @@ const chartConfig = {
 
 export function Chart() {
   return (
-    <Card className="flex flex-col bg-gray-700 boorder-none shadow-none">
-      <CardHeader className="items-center pb-0">
+    <Card className="flex flex-col bg-gray-700 boorder-none shadow-none h-20">
+      <CardHeader className="items-center space-y-0 p-0">
         <CardTitle></CardTitle>
         <CardDescription></CardDescription>
       </CardHeader>
-      <CardContent className="flex-1 pb-0">
+      <CardContent className="flex-1">
         <ChartContainer
           config={chartConfig}
           className="mx-auto aspect-square max-h-[60px] max-w-[60px]"
