@@ -7,7 +7,7 @@ import InvoiceBalanece from "./components/sidebar/pages/invoiceBalanece";
 import ProfileForm from "./components/sidebar/pages/profileForm";
 import Calendar from "./components/sidebar/pages/calendar";
 import FAQPage from "./components/sidebar/pages/faqs";
-import BarChart from "./components/sidebar/pages/barChart";
+import Bar_Chart from "./components/sidebar/pages/bar_Chart";
 import PieChart from "./components/sidebar/pages/pieChart";
 import LineChart from "./components/sidebar/pages/lineChart";
 import GeographyChart from "./components/sidebar/pages/geographyChart";
@@ -25,7 +25,7 @@ const App: React.FC = () => {
           <Route path="profileForm" element={<ProfileForm />} />
           <Route path="calendar" element={<Calendar />} />
           <Route path="faqs" element={<FAQPage />} />
-          <Route path="barChart" element={<BarChart />} />
+          <Route path="bar_Chart" element={<Bar_Chart />} />
           <Route path="pieChart" element={<PieChart />} />
           <Route path="lineChart" element={<LineChart />} />
           <Route path="geographyChart" element={<GeographyChart />} />
