@@ -32,11 +32,11 @@ const Dashboard: FC = () => {
           descriptions="Nuevos usuarios"
         />
       </div>
-      <div className="grid grid-cols-4 gap-4">
-        <div className="col-span-3">
+      <div className="flex flex-row gap-2">
+        <div className="">
           <LineChartComponent />
         </div>
-        <div className="col-span-1">
+        <div className="bg-gray-700 rounded w-full">
           <h1>Table</h1>
         </div>
       </div>

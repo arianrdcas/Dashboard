@@ -44,9 +44,12 @@ const chartConfig = {
 
 const LineChartComponent: FC = () => {
   return (
-    <Card className="bg-gray-700">
+    <Card className="bg-gray-700 w-[800px] rounded">
       <CardContent>
-        <ChartContainer config={chartConfig}>
+        <ChartContainer
+          config={chartConfig}
+          className="min-h-[100px] max-h-[200px] w-full pt-3"
+        >
           <LineChart
             accessibilityLayer
             data={chartData}
@@ -55,7 +58,7 @@ const LineChartComponent: FC = () => {
               right: 12,
             }}
           >
-            <CartesianGrid vertical={false}/>
+            <CartesianGrid vertical={false} />
             <XAxis
               dataKey="month"
               tickLine={false}
