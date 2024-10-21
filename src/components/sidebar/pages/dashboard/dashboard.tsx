@@ -7,6 +7,7 @@ import ButtonDownLoad from "./buttonDownload";
 import LineChartComponent from "./lineChart";
 import PieChartDonut from "./pieChartDonut";
 import Bar_Chart from "./barChart";
+import RadialChart from "./radialChart";
 
 const Dashboard: FC = () => {
   return (
@@ -49,7 +50,9 @@ const Dashboard: FC = () => {
         <div>
           <Bar_Chart />
         </div>
-        <div className="bg-gray-700 rounded h-36"></div>
+        <div className="bg-gray-700 rounded h-36">
+          <RadialChart/>
+        </div>
       </div>
     </>
   );
