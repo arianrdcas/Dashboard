@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Layout from "./components/layout";
 import Dashboard from "./components/sidebar/pages/dashboard/dashboard";
-import ManageTeam from "./components/sidebar/pages/manageTeam";
+import ManageTeam from "./components/sidebar/pages/manage-team/manageTeam";
 import ContactInformation from "./components/sidebar/pages/contactInformation";
 import InvoiceBalanece from "./components/sidebar/pages/invoiceBalanece";
 import ProfileForm from "./components/sidebar/pages/profileForm";

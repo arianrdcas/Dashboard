@@ -8,6 +8,7 @@ import LineChartComponent from "./lineChart";
 import PieChartDonut from "./pieChartDonut";
 import Bar_Chart from "./barChart";
 import RadialChart from "./radialChart";
+import ExampleTable from "./table";
 
 const Dashboard: FC = () => {
   return (
@@ -42,7 +43,7 @@ const Dashboard: FC = () => {
           <LineChartComponent />
         </div>
         <div className="bg-gray-700  rounded">
-          <h1>Table</h1>
+          <ExampleTable/>
         </div>
         <div className="">
           <PieChartDonut />
