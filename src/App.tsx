@@ -11,10 +11,15 @@ import Bar_Chart from "./components/sidebar/pages/bar_Chart";
 import PieChart from "./components/sidebar/pages/pieChart";
 import LineChart from "./components/sidebar/pages/lineChart";
 import GeographyChart from "./components/sidebar/pages/geographyChart";
+import { Toaster as SonnerToaster } from "@/components/ui/sonner";
+//import { Toast } from "./components/ui/toast";
+
 
 const App: React.FC = () => {
   return (
     <Router>
+      <SonnerToaster richColors />
+      
       <Routes>
         <Route path="/" element={<Layout />}>
           {/* Rutas anidadas dentro del Layout */}

@@ -4,6 +4,8 @@ import Footer from "./footer";
 import Sidebar from "./sidebar/sideBar";
 import Navbar from "./navBar";
 
+
+
 interface LayoutProps {
   children?: ReactNode; // `ReactNode` cubre cualquier cosa que pueda ser renderizable.
 }
@@ -27,6 +29,7 @@ const Layout: React.FC<LayoutProps> = () => {
       <div className="bg-gray-700 col-start-2 row-start-3">
         <Footer />
       </div>
+     
     </div>
   );
 };
