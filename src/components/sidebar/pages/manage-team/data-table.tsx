@@ -9,6 +9,7 @@ import {
   getPaginationRowModel,
   getSortedRowModel,
   useReactTable,
+  VisibilityState,
 } from "@tanstack/react-table";
 
 import {
@@ -20,8 +21,15 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 
+import {
+  DropdownMenu,
+  DropdownMenuCheckboxItem,
+  DropdownMenuContent,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+
+import { Input } from "@/components/ui/input";
 
 import {
   Select,
@@ -32,6 +40,9 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import type { Payment } from "@/data/payments.data";
+
+
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
@@ -41,12 +52,17 @@ export function DataTable<TData, TValue>({
   columns,
   data,
 }: DataTableProps<TData, TValue>) {
-
   const [sorting, setSorting] = useState<SortingState>([]);
 
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
 
   const [currentStatus, setCurrentStatus] = useState("all");
+
+  const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({});
+
+  const [rowSelection, setRowSelection] = useState({});
+
+  const isDeleteVisible = Object.keys(rowSelection).length > 0;
 
   const table = useReactTable({
     data,
@@ -55,11 +71,15 @@ export function DataTable<TData, TValue>({
     getPaginationRowModel: getPaginationRowModel(),
     onSortingChange: setSorting,
     getSortedRowModel: getSortedRowModel(),
+    onColumnVisibilityChange: setColumnVisibility,
     onColumnFiltersChange: setColumnFilters,
     getFilteredRowModel: getFilteredRowModel(),
+    onRowSelectionChange: setRowSelection,
     state: {
       sorting,
       columnFilters,
+      columnVisibility,
+      rowSelection,
     },
   });
 
@@ -103,6 +123,51 @@ export function DataTable<TData, TValue>({
             </SelectGroup>
           </SelectContent>
         </Select>
+
+        {isDeleteVisible && (
+          <Button
+            className="ml-3"
+            variant="destructive"
+            onClick={() => {
+              //table.getSelectedRowModel().rows.forEach((row) => {
+              //console.log(row.original)
+              // })
+              const ids = table.getSelectedRowModel().rows.map((row) => {
+                return (row.original as Payment).clientName;
+              });
+              console.log(ids);
+            }}
+          >
+            Delete
+          </Button>
+        )}
+
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button className="border bg-gray-800 bg ml-auto">Columns</Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end">
+            {table
+              .getAllColumns()
+              .filter((column) => column.getCanHide())
+              .filter((column) => column.id !== "actions")
+
+              .map((column) => {
+                return (
+                  <DropdownMenuCheckboxItem
+                    key={column.id}
+                    className="capitalize"
+                    checked={column.getIsVisible()}
+                    onCheckedChange={(value) =>
+                      column.toggleVisibility(!!value)
+                    }
+                  >
+                    {column.id}
+                  </DropdownMenuCheckboxItem>
+                );
+              })}
+          </DropdownMenuContent>
+        </DropdownMenu>
       </div>
       <div className=" rounded border">
         <Table>
@@ -153,24 +218,50 @@ export function DataTable<TData, TValue>({
             )}
           </TableBody>
         </Table>
-        <div className="flex items-center justify-end space-x-2 py-4 mx-2">
-          <Button
-            className="text-white"
-            size="sm"
-            onClick={() => table.previousPage()}
-            disabled={!table.getCanPreviousPage()}
-          >
-            Previous
-          </Button>
-          <Button
-            className="text-white px-6"
-            size="sm"
-            onClick={() => table.nextPage()}
-            disabled={!table.getCanNextPage()}
-          >
-            Next
-          </Button>
+        <div className="space-x-2 py-4 mx-2 flex justify-between items-center">
+          <div className="flex-1 text-sm text-white">
+            {table.getFilteredSelectedRowModel().rows.length} of{" "}
+            {table.getFilteredRowModel().rows.length} row(s) selected.
+          </div>
+
+          <div className="flex items-center justify-end space-x-2">
+            <Button
+              className="text-white"
+              size="sm"
+              onClick={() => table.previousPage()}
+              disabled={!table.getCanPreviousPage()}
+            >
+              Previous
+            </Button>
+            <Button
+              className="text-white px-6"
+              size="sm"
+              onClick={() => table.nextPage()}
+              disabled={!table.getCanNextPage()}
+            >
+              Next
+            </Button>
+          </div>
         </div>
+        <Select
+          onValueChange={(value) => {
+            table.setPageSize(+value);
+          }}
+        >
+          <SelectTrigger className="w-[180px] m-2">
+            <SelectValue placeholder="10 Rows" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectGroup>
+              <SelectLabel>Rows per page</SelectLabel>
+              <SelectItem value="10">10</SelectItem>
+              <SelectItem value="20">20</SelectItem>
+              <SelectItem value="30">30</SelectItem>
+              <SelectItem value="50">50</SelectItem>
+              <SelectItem value="100">100</SelectItem>
+            </SelectGroup>
+          </SelectContent>
+        </Select>
       </div>
     </div>
   );

@@ -1,9 +1,10 @@
 import { Payment } from "@/data/payments.data";
-import { ColumnDef, SortDirection } from "@tanstack/react-table";
+import { ColumnDef, FilterFn, Row} from "@tanstack/react-table";
 import { Badge } from "@/components/ui/badge";
+import { Checkbox } from "@/components/ui/checkbox";
 import { Button } from "@/components/ui/button";
-import { ChevronDownIcon, ChevronUpIcon } from "lucide-react";
-import { MoreHorizontal } from "lucide-react"
+
+import { MoreHorizontal } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -13,58 +14,97 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { toast } from "sonner";
+import SortedIcon from "./sortedIcon";
 
 
+type VariantType =
+  | "default"
+  | "destructive"
+  | "outline"
+  | "secondary"
+  | "info"
+  | "success";
 
-const SortedIcon = ({ isSorted }: { isSorted: false | SortDirection }) => {
-  if (isSorted === "asc") {
-    return <ChevronUpIcon className="h-4 w-4" />;
-  }
-  if (isSorted === "desc") {
-    return <ChevronDownIcon className="h-4 w-4" />;
-  }
-  return null;
+
+const getVariantFromStatus = (status: string): VariantType => {
+  const variantMap: Record<string, VariantType> = {
+    pending: "info",
+    processing: "secondary",
+    success: "success",
+    failed: "destructive",
+  };
+
+  return variantMap[status] || "default";
+};
+
+const myCustomFilterFn: FilterFn<Payment> = (
+  row: Row<Payment>,
+  _columnId: string,
+  filterValue: string,
+  _addMeta: (meta: any) => void // eslint-disable-line @typescript-eslint/no-unused-vars
+) => {
+  filterValue = filterValue.toLowerCase();
+  const filterParts = filterValue.split(" ");
+  const rowValues =
+    `${row.original.email} ${row.original.clientName} ${row.original.status} `.toLowerCase();
+
+  return filterParts.every((part) => rowValues.includes(part));
 };
 
 export const columns: ColumnDef<Payment>[] = [
   {
+    id: "select",
+    header: ({ table }) => (
+      <Checkbox
+        className="border-white"
+        checked={
+          table.getIsAllPageRowsSelected() ||
+          (table.getIsSomePageRowsSelected() && "indeterminate")
+        }
+        onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
+        aria-label="Select all"
+      />
+    ),
+    cell: ({ row }) => (
+      <Checkbox
+        className="border-white"
+        checked={row.getIsSelected()}
+        onCheckedChange={(value) => row.toggleSelected(!!value)}
+        aria-label="Select row"
+      />
+    ),
+    enableSorting: false,
+    enableHiding: false,
+  },
+  {
     accessorKey: "clientName",
-    header: ({ column }) => {
-      return (
-        <Button
-          variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        >
-          Client Name
-          <SortedIcon isSorted={column.getIsSorted()} />
-        </Button>
-      );
-    },
+    header: ({ column }) => (
+      <Button
+        variant="ghost"
+        onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+      >
+        Client Name
+        <SortedIcon isSorted={column.getIsSorted()} />
+      </Button>
+    ),
   },
   {
     accessorKey: "status",
-    header: ({ column }) => {
-      return (
-        <Button
-          variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        >
-          Status
-          <SortedIcon isSorted={column.getIsSorted()} />
-        </Button>
-      );
-    },
+    header: ({ column }) => (
+      <Button
+        variant="ghost"
+        onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+      >
+        Status
+        <SortedIcon isSorted={column.getIsSorted()} />
+      </Button>
+    ),
     cell: ({ row }) => {
       const status = row.getValue("status") as string;
-      const variant =
-        {
-          pending: "info",
-          processing: "secondary",
-          success: "success",
-          failed: "destructive",
-        }[status] ?? ("default" as any);
+      const variant = getVariantFromStatus(status); // Usar la función para obtener el variant correcto
+
       return (
-        <Badge variant={variant} capitalize>
+        <Badge variant={variant} className="capitalize">
           {status}
         </Badge>
       );
@@ -72,34 +112,30 @@ export const columns: ColumnDef<Payment>[] = [
   },
   {
     accessorKey: "email",
-    header: ({ column }) => {
-      return (
+    filterFn: myCustomFilterFn,
+    header: ({ column }) => (
+      <Button
+        variant="ghost"
+        onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+      >
+        Email
+        <SortedIcon isSorted={column.getIsSorted()} />
+      </Button>
+    ),
+  },
+  {
+    accessorKey: "amount",
+    header: ({ column }) => (
+      <div className="text-right">
         <Button
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          Email
+          Amount
           <SortedIcon isSorted={column.getIsSorted()} />
         </Button>
-      );
-    },
-  },
-
-  {
-    accessorKey: "amount",
-    header: ({ column }) => {
-      return (
-        <div className="text-right">
-          <Button
-            variant="ghost"
-            onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-          >
-            Amount
-            <SortedIcon isSorted={column.getIsSorted()} />
-          </Button>
-        </div>
-      );
-    },
+      </div>
+    ),
     cell: ({ row }) => {
       const amount = parseFloat(row.getValue("amount"));
       const formatted = new Intl.NumberFormat("en-US", {
@@ -115,6 +151,14 @@ export const columns: ColumnDef<Payment>[] = [
     cell: ({ row }) => {
       const payment = row.original;
 
+      const copyPaymentId = () => {
+        navigator.clipboard.writeText(payment.id);
+        toast.success("Payment Id copied to clipboard", {
+          richColors: true,
+          position: "top-right",
+        });
+      };
+
       return (
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
@@ -125,15 +169,7 @@ export const columns: ColumnDef<Payment>[] = [
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
-            <DropdownMenuItem
-              onClick={() => {
-                navigator.clipboard.writeText(payment.id);
-                toast.success("Payment Id copied to clipboard", {
-                  richColors: true,
-                  position: "top-right",
-                });
-              }}
-            >
+            <DropdownMenuItem onClick={copyPaymentId}>
               Copy payment ID
             </DropdownMenuItem>
             <DropdownMenuSeparator />
