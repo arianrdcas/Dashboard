@@ -1,8 +1,8 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Layout from "./components/layout";
 import Dashboard from "./components/sidebar/pages/dashboard/dashboard";
-import ManageTeam from "./components/sidebar/pages/manage-team/manageTeam";
-import ContactInformation from "./components/sidebar/pages/contactInformation";
+import ContactInformation from "./components/sidebar/pages/contact-information/contactInformation";
+import ManageTeam from "./components/sidebar/pages/manageTeam";
 import InvoiceBalanece from "./components/sidebar/pages/invoiceBalanece";
 import ProfileForm from "./components/sidebar/pages/profileForm";
 import Calendar from "./components/sidebar/pages/calendar";
@@ -19,13 +19,13 @@ const App: React.FC = () => {
   return (
     <Router>
       <SonnerToaster richColors />
-      
+
       <Routes>
         <Route path="/" element={<Layout />}>
           {/* Rutas anidadas dentro del Layout */}
           <Route path="dashboard" element={<Dashboard />} />
-          <Route path="manageTeam" element={<ManageTeam />} />
           <Route path="contactInformation" element={<ContactInformation />} />
+          <Route path="manageTeam" element={<ManageTeam />} />
           <Route path="invoiceBalanece" element={<InvoiceBalanece />} />
           <Route path="profileForm" element={<ProfileForm />} />
           <Route path="calendar" element={<Calendar />} />

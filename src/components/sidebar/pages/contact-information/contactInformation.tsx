@@ -3,21 +3,19 @@ import { payments } from "@/data/payments.data";
 import { DataTable } from "./data-table";
 import { columns } from "./columns";
 
-const ManageTeam = (): JSX.Element => {
+const ContactInformation = (): JSX.Element => {
   const [data, setData] = useState<any>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
-  
   const fetchData = async () => {
-    return payments; 
+    return payments;
   };
 
   useEffect(() => {
     const loadData = async () => {
-      
       try {
-        const response = await fetchData(); 
+        const response = await fetchData();
         setData(response);
       } catch (err) {
         setError("Error fetching data");
@@ -26,7 +24,7 @@ const ManageTeam = (): JSX.Element => {
       }
     };
 
-    loadData(); 
+    loadData();
   }, []);
 
   if (loading) {
@@ -39,7 +37,7 @@ const ManageTeam = (): JSX.Element => {
 
   return (
     <>
-      <h1 className="text-white">Manage Team</h1>
+      <h1 className="text-white">Contac-Information</h1>
       <div className="text-white">
         <DataTable columns={columns} data={data} />
       </div>
@@ -47,4 +45,4 @@ const ManageTeam = (): JSX.Element => {
   );
 };
 
-export default ManageTeam;
+export default ContactInformation;

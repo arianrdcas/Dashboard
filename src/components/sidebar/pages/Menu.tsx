@@ -22,11 +22,15 @@ interface MenuItemType {
 
 const menuItems: MenuItemType[] = [
   { name: "Dashboard", icon: <HomeIcon />, link: "/dashboard" },
-  { name: "Manage-Team", icon: <PeopleAltOutlinedIcon />, link: "/manageTeam" },
   {
     name: "Contact-Information",
     icon: <ContactsOutlinedIcon />,
     link: "/contactInformation",
+  },
+  {
+    name: "Manage Team",
+    icon: <PeopleAltOutlinedIcon />,
+    link: "/manageTeam",
   },
   {
     name: "Invoice-Balance",
