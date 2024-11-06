@@ -4,7 +4,6 @@ import MenuItems from "./MenuItems";
 import HomeIcon from "@mui/icons-material/Home";
 import PeopleAltOutlinedIcon from "@mui/icons-material/PeopleAltOutlined";
 import DescriptionOutlinedIcon from "@mui/icons-material/DescriptionOutlined";
-import DynamicFormOutlinedIcon from "@mui/icons-material/DynamicFormOutlined";
 import CalendarTodayOutlinedIcon from "@mui/icons-material/CalendarTodayOutlined";
 import QuestionMarkOutlinedIcon from "@mui/icons-material/QuestionMarkOutlined";
 import StackedBarChartOutlinedIcon from "@mui/icons-material/StackedBarChartOutlined";
@@ -12,6 +11,8 @@ import DonutLargeOutlinedIcon from "@mui/icons-material/DonutLargeOutlined";
 import ShowChartOutlinedIcon from "@mui/icons-material/ShowChartOutlined";
 import MapOutlinedIcon from "@mui/icons-material/MapOutlined";
 import ContactsOutlinedIcon from "@mui/icons-material/ContactsOutlined";
+import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
+
 
 
 interface MenuItemType {
@@ -39,7 +40,7 @@ const menuItems: MenuItemType[] = [
   },
   {
     name: "Profile-Form",
-    icon: <DynamicFormOutlinedIcon />,
+    icon: <PersonOutlineOutlinedIcon />,
     link: "/profileForm",
   },
   {
