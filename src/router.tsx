@@ -5,7 +5,7 @@ import ContactInformation from "./pages/contact-information/contactInformation";
 import ManageTeam from "./pages/ManageTeam/manageTeam";
 import InvoiceBalanece from "./pages/InvoiceBalance/invoiceBalanece";
 import ProfileForm from "./pages/ProfileForm/profileForm";
-import Calendar from "./pages/Calendar/calendar";
+import Calendario from "./pages/Calendar/calendar";
 import FAQPage from "./pages/Faqs/faqs";
 import BarChart from "./pages/BarChart/barChart";
 import PieChart from "./pages/PieChart/pieChart";
@@ -25,7 +25,7 @@ const RouterGlobal = () => {
           <Route path="manageTeam" element={<ManageTeam />} />
           <Route path="invoiceBalanece" element={<InvoiceBalanece />} />
           <Route path="profileForm" element={<ProfileForm />} />
-          <Route path="calendar" element={<Calendar />} />
+          <Route path="calendar" element={<Calendario />} />
           <Route path="faqs" element={<FAQPage />} />
           <Route path="barChart" element={<BarChart />} />
           <Route path="pieChart" element={<PieChart />} />
