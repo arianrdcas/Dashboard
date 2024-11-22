@@ -12,13 +12,19 @@ import PieChart from "./pages/PieChart/pieChart";
 import LineChart from "./pages/LineChart/lineChart";
 import GeographyChart from "./pages/GeographyChart/geographyChart";
 import { Toaster as SonnerToaster } from "@/components/ui/sonner";
+import LoginForm from "./pages/signIn";
+import RegisterForm from "./pages/signUp";
+
 
 const RouterGlobal = () => {
   return (
     <Router>
       <SonnerToaster richColors />
       <Routes>
-        <Route path="/" element={<Layout />}>
+        <Route path="/" element={<LoginForm />} />
+        <Route path="/signup" element={<RegisterForm />} />
+
+        <Route path="/layout" element={<Layout />}>
           {/* Rutas anidadas dentro del Layout */}
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="contactInformation" element={<ContactInformation />} />
