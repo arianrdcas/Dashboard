@@ -15,8 +15,8 @@ const Calendario: FC = () => {
 
   return (
     <>
-      <h1 className="text-3xl text-white mb-8">Calendario</h1>
-      <div className="flex-col text-white sm:flex-wrap sm:flex sm:flex-row gap-4">
+      <h1 className="text-3xl text-black mb-8">Calendario</h1>
+      <div className="flex-col text-black sm:flex-wrap sm:flex sm:flex-row gap-4">
         <Calendar
           mode="multiple"
           selected={multipleDates}

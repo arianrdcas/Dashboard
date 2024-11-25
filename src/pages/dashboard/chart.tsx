@@ -54,7 +54,7 @@ const chartConfig = {
 
 export function Chart() {
   return (
-    <Card className="flex flex-col bg-gray-700 boorder-none shadow-none h-20">
+    <Card className="flex flex-col boorder-none shadow-none h-20">
       <CardHeader className="items-center space-y-0 p-0">
         <CardTitle></CardTitle>
         <CardDescription></CardDescription>

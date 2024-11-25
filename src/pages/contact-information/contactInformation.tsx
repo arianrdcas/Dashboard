@@ -37,8 +37,8 @@ const ContactInformation = (): JSX.Element => {
 
   return (
     <>
-      <h1 className="text-white">Contac-Information</h1>
-      <div className="text-white">
+      <h1 className="text-black">Contac-Information</h1>
+      <div className="text-black">
         <DataTable columns={columns} data={data} />
       </div>
     </>

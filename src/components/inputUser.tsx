@@ -1,6 +1,7 @@
-//import { Input } from "@mui/material";
+import { Input } from "@/components/ui/input";
 
 interface InputFormUserProps {
+  required?:boolean
   label: string;
   type: string;
   placeholder: string;
@@ -20,13 +21,12 @@ const InputFormUser: React.FC<InputFormUserProps> = ({
   return (
     <div className="flex flex-col">
       <label className="text-white">{label}</label>
-      <input
+      <Input
         type={type}
         placeholder={placeholder}
         value={value}
         name={name}
         onChange={onChange}
-        className=" border border-transparent rounded bg-gray-600 text-white placeholder-white pl-3 pr-4 py-1 w-full focus:border-white focus:outline-none"
       />
     </div>
   );

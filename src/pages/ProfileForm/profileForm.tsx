@@ -26,8 +26,8 @@ const ProfileForm: React.FC = () => {
 
   return (
     <>
-      <h1 className="text-white font-semibold text-3xl">CREATE USER</h1>
-      <p className="text-sky-300 mt-2 text-sm">Create a new user profile</p>
+      <h1 className="text-black font-semibold text-3xl">CREATE USER</h1>
+      <p className="text-black mt-2 text-sm">Create a new user profile</p>
       <form onSubmit={handleSubmit}>
         <div className="grid md:grid-cols-2 gap-8 mt-8">
           <InputFormUser

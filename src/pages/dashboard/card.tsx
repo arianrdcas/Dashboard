@@ -9,7 +9,7 @@ interface CardProps {
 
 const Card: FC<CardProps> = ({ icon, cuantiti, descriptions }) => {
   return (
-    <div className="bg-gray-700 h-24 p-4 rounded grid grid-cols-2">
+    <div className="h-30 p-4 rounded grid grid-cols-2 border border-black">
       <div className="flex flex-col  items-start text-sm">
         {icon}
         {cuantiti !== undefined && <p className="text-lg">{cuantiti}</p>}

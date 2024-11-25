@@ -1,5 +1,7 @@
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import InputFormUser from "@/components/inputUser";
+import { useState } from "react";
+
 import {
   Card,
   CardContent,
@@ -10,11 +12,49 @@ import {
 import { Link } from "react-router-dom";
 
 
-export default function LoginForm() {
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    // Handle login logic here
-  };
+const LoginForm:React.FC = () => {
+  const [loginData, setLoginData] = useState({
+    email:"",
+    password:""
+  })
+
+  const [errors, setErrors] = useState({
+    email: "",
+    password: "",
+  });
+
+const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const { name, value } = event.target;
+  setLoginData({
+    ...loginData,
+    [name]: value,
+  });
+  if (errors[name as keyof typeof errors]) {
+    setErrors({
+      ...errors,
+      [name]: "",
+    });
+  }
+};
+
+const handleSubmit = (event: React.FormEvent) => {
+  event.preventDefault();
+  const newErrors = { email: "", password: "" };
+  if (!loginData.email) {
+    newErrors.email = "El email es requerido.";
+  }
+
+  if (!loginData.password) {
+    newErrors.password = "La contraseña es requerida.";
+  }
+
+  if (newErrors.email || newErrors.password) {
+    setErrors(newErrors);
+    return;
+  }
+
+  console.log("Datos enviados:", loginData);
+};
 
   return (
     <div className="min-h-screen flex items-center justify-center">
@@ -27,10 +67,32 @@ export default function LoginForm() {
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <Input type="email" placeholder="Email" required />
+              <InputFormUser
+                label="Email"
+                type="email"
+                placeholder="Email"
+                name="email"
+                value={loginData.email}
+                onChange={handleInputChange}
+                required
+              />
+              {errors.email && (
+                <p className="text-red-500 text-sm mt-1">{errors.email}</p>
+              )}
             </div>
             <div>
-              <Input type="password" placeholder="Contraseña" required />
+              <InputFormUser
+                label="password"
+                type="password"
+                placeholder="Contraseña"
+                name="password"
+                value={loginData.password}
+                onChange={handleInputChange}
+                required
+              />
+              {errors.password && (
+                <p className="text-red-500 text-sm mt-1">{errors.password}</p>
+              )}
             </div>
             <Button type="submit" className="w-full">
               Inicia sesion
@@ -57,3 +119,4 @@ export default function LoginForm() {
     </div>
   );
 }
+export default LoginForm;

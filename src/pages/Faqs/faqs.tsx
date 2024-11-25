@@ -31,7 +31,7 @@ const items = [
 
 const FAQPage: FC = () => {
   return (
-    <div className="text-white mt-14">
+    <div className="text-black mt-14">
       <h1 className="text-3xl mb-8">Preguntas Frecuentes</h1>
       <Accordion type="single" className="w-full" collapsible>
         {items.map((item) => (

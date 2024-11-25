@@ -145,7 +145,7 @@ export function DataTable<TData, TValue>({
 
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button className="border bg-gray-800 bg ml-auto">Columns</Button>
+            <Button className="border bg-black ml-auto">Columns</Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
             {table
@@ -177,7 +177,7 @@ export function DataTable<TData, TValue>({
               <TableRow key={headerGroup.id}>
                 {headerGroup.headers.map((header) => {
                   return (
-                    <TableHead key={header.id} className="text-white">
+                    <TableHead key={header.id} className="text-black">
                       {header.isPlaceholder
                         ? null
                         : flexRender(
@@ -220,7 +220,7 @@ export function DataTable<TData, TValue>({
           </TableBody>
         </Table>
         <div className="space-x-2 py-4 mx-2 flex justify-between items-center">
-          <div className="flex-1 text-sm text-white">
+          <div className="flex-1 text-sm text-black">
             {table.getFilteredSelectedRowModel().rows.length} of{" "}
             {table.getFilteredRowModel().rows.length} row(s) selected.
           </div>

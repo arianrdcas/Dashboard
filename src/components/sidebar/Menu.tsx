@@ -22,56 +22,56 @@ interface MenuItemType {
 }
 
 const menuItems: MenuItemType[] = [
-  { name: "Dashboard", icon: <HomeIcon />, link: "/dashboard" },
+  { name: "Dashboard", icon: <HomeIcon />, link: "/app/dashboard" },
   {
     name: "Contact-Information",
     icon: <ContactsOutlinedIcon />,
-    link: "/contactInformation",
+    link: "/app/contact-information",
   },
   {
     name: "Manage Team",
     icon: <PeopleAltOutlinedIcon />,
-    link: "/manageTeam",
+    link: "/app/manage-team",
   },
   {
     name: "Invoice-Balance",
     icon: <DescriptionOutlinedIcon />,
-    link: "/invoiceBalanece",
+    link: "/app/invoice-balance",
   },
   {
     name: "Profile-Form",
     icon: <PersonOutlineOutlinedIcon />,
-    link: "/profileForm",
+    link: "/app/profile-form",
   },
   {
     name: "Calendar",
     icon: <CalendarTodayOutlinedIcon />,
-    link: "/calendar",
+    link: "/app/calendar",
   },
   {
     name: "FAQ-Page",
     icon: <QuestionMarkOutlinedIcon />,
-    link: "/faqs",
+    link: "/app/faqs",
   },
   {
     name: "Bar-Chart",
     icon: <StackedBarChartOutlinedIcon />,
-    link: "/barChart",
+    link: "/app/bar-chart",
   },
   {
     name: "Pie-Chart",
     icon: <DonutLargeOutlinedIcon />,
-    link: "/pieChart",
+    link: "/app/pie-chart",
   },
   {
     name: "Line-Chart",
     icon: <ShowChartOutlinedIcon />,
-    link: "/lineChart",
+    link: "/app/line-chart",
   },
   {
     name: "Geography-Chart",
     icon: <MapOutlinedIcon />,
-    link: "/geographyChart",
+    link: "/app/geography-chart",
   },
 ];
 

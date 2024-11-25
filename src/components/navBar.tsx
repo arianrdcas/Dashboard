@@ -21,11 +21,11 @@ const Navbar: FC = () => {
     <div className="flex justify-between px-3 py-2 items-center relative">
       {/* Contenido del Navbar */}
       <div className="relative">
-        <SearchOutlinedIcon className="absolute right-5 top-1/2 transform -translate-y-1/2 text-white " />
+        <SearchOutlinedIcon className="absolute right-5 top-1/2 transform -translate-y-1/2 text-black " />
         <input
           type="text"
           placeholder="Search"
-          className="border border-transparent rounded bg-gray-600 text-white placeholder-white pl-3 pr-4 py-1 w-full focus:border-white focus:outline-none"
+          className="border border-black rounded  text-black placeholder-white pl-3 pr-4 py-1 w-full focus:outline-none"
         />
       </div>
       <div className="flex justify-around py-3 w-52 items-center">
@@ -36,17 +36,17 @@ const Navbar: FC = () => {
           {isDarkTheme ? (
             <DarkModeOutlinedIcon className="w-6 h-6 text-white" />
           ) : (
-            <WbSunnyOutlinedIcon className="w-6 h-6 text-white" />
+            <WbSunnyOutlinedIcon className="w-6 h-6 text-black" />
           )}
         </button>
         <button className="transition duration-300 hover:scale-125">
-          <NotificationsNoneOutlinedIcon className="w-6 h-6 text-white" />
+          <NotificationsNoneOutlinedIcon className="w-6 h-6 text-black" />
         </button>
         <button className="transition duration-300 hover:scale-125">
-          <SettingsOutlinedIcon className="w-6 h-6 text-white" />
+          <SettingsOutlinedIcon className="w-6 h-6 text-black" />
         </button>
         <button className="transition duration-300 hover:scale-125">
-          <PersonOutlineOutlinedIcon className="w-6 h-6 text-white" />
+          <PersonOutlineOutlinedIcon className="w-6 h-6 text-black" />
         </button>
       </div>
     </div>

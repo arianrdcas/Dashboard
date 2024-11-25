@@ -33,10 +33,10 @@ const RadialChart: FC = () => {
   const totalVisitors = chartData[0].desktop + chartData[0].mobile;
 
   return (
-    <Card className="flex flex-col bg-gray-700 rounded text-white">
+    <Card className="flex flex-col border border-black rounded text-black">
       <CardHeader className="items-center pb-0">
         <CardTitle>Radial Chart - Stacked</CardTitle>
-        <CardDescription className="text-white">
+        <CardDescription className="text-black">
           January - June 2024
         </CardDescription>
       </CardHeader>
@@ -103,7 +103,7 @@ const RadialChart: FC = () => {
         <div className="flex items-center gap-2 font-medium leading-none">
           Trending up by 5.2% this month <TrendingUp className="h-4 w-4" />
         </div>
-        <div className="leading-none text-muted-foreground text-white">
+        <div className="leading-none text-muted-foreground text-black">
           Showing total visitors for the last 6 months
         </div>
       </CardFooter>

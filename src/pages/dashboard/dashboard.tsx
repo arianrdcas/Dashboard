@@ -15,10 +15,10 @@ const Dashboard: FC = () => {
   return (
     <>
       <div className="flex justify-between">
-        <h1 className="text-white">Dashboard</h1>
+        <h1 className="text-black">Dashboard</h1>
         <ButtonDownLoad />
       </div>
-      <div className="grid grid-cols-3 gap-4 text-white my-2">
+      <div className="grid grid-cols-3 gap-4 text-black my-2">
         <div>
           <Card
             icon={<EmailOutlinedIcon className="h-6 w-6" />}
@@ -43,7 +43,7 @@ const Dashboard: FC = () => {
         <div className="col-span-2">
           <LineChartComponent />
         </div>
-        <div className="bg-gray-700  rounded">
+        <div className="border border-black rounded">
           <ExampleTable/>
         </div>
         <div className="">
@@ -52,7 +52,7 @@ const Dashboard: FC = () => {
         <div>
           <Bar_Chart />
         </div>
-        <div className="bg-gray-700 rounded h-36">
+        <div className="rounded h-36">
           <RadialChart/>
         </div>
       </div>

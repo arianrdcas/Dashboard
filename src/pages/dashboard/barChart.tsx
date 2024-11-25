@@ -43,10 +43,10 @@ const chartConfig = {
 
 const Bar_Chart: FC = () => {
   return (
-    <Card className="bg-gray-700 rounded text-white">
+    <Card className="rounded text-black">
       <CardHeader className="items-center pb-0">
         <CardTitle>Bar Chart - Stacked + Legend</CardTitle>
-        <CardDescription className="text-white">
+        <CardDescription className="text-black">
           January - June 2024
         </CardDescription>
       </CardHeader>

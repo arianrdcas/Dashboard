@@ -44,8 +44,8 @@ const chartConfig = {
 
 const LineChartComponent: FC = () => {
   return (
-    <Card className="bg-gray-700 rounded">
-      <CardContent>
+    <Card className="rounded">
+      <CardContent className="border border-black rounded">
         <ChartContainer
           config={chartConfig}
           className="min-h-[100px] max-h-[200px] w-full pt-3"
