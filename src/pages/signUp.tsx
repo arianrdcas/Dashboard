@@ -26,29 +26,38 @@ export default function RegisterForm() {
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
+              <Input type="text" placeholder="Nombre" required />
+            </div>
+            <div>
+              <Input type="text" placeholder="Apellido" required />
+            </div>
+            <div>
               <Input type="email" placeholder="Email" required />
             </div>
             <div>
-              <Input type="password" placeholder="Password" required />
+              <Input type="email" placeholder="Confirme Email" required />
+            </div>
+            <div>
+              <Input type="password" placeholder="Contraseña" required />
             </div>
             <Button type="submit" className="w-full">
-              Log In
+              Registro
             </Button>
           </form>
         </CardContent>
         <CardFooter className="flex flex-col space-y-4">
           <div className="flex space-x-2 w-full">
             <Button variant="outline" className="flex-1">
-              Login with Google
+              Ingresa con Google
             </Button>
             <Button variant="outline" className="flex-1">
-              Login with Facebook
+              Ingresa con Facebook
             </Button>
           </div>
           <div className="text-center text-sm">
-            Don't have an account?{" "}
-            <Link to="/signup" className="text-blue-600 hover:underline">
-              Sign up
+            Ya tienes una cuenta?{" "}
+            <Link to="/" className="text-blue-600 hover:underline">
+              Inicia sesion
             </Link>
           </div>
         </CardFooter>

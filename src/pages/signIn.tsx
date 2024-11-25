@@ -21,7 +21,7 @@ export default function LoginForm() {
       <Card className="w-full max-w-sm mx-auto border-2 border-black shadow-md">
         <CardHeader>
           <CardTitle className="text-2xl font-bold text-center">
-            Login
+            Inicia sesion
           </CardTitle>
         </CardHeader>
         <CardContent>
@@ -30,27 +30,27 @@ export default function LoginForm() {
               <Input type="email" placeholder="Email" required />
             </div>
             <div>
-              <Input type="password" placeholder="Password" required />
+              <Input type="password" placeholder="Contraseña" required />
             </div>
             <Button type="submit" className="w-full">
-              Log In
+              Inicia sesion
             </Button>
           </form>
         </CardContent>
         <CardFooter className="flex flex-col space-y-4">
           <div className="flex space-x-2 w-full">
             <Button variant="outline" className="flex-1">
-              Login with Google
+              Ingresa con Google
             </Button>
             <Button variant="outline" className="flex-1">
-              Login with Facebook
+              Ingresa con Facebook
             </Button>
           </div>
           <div className="text-center text-sm">
-            Don't have an account?{" "}
+            Ya tienes una cuenta?{" "}
             <Link to="/signup" className="text-blue-600 hover:underline">
-            Sign up
-          </Link> 
+              Registrate
+            </Link>
           </div>
         </CardFooter>
       </Card>

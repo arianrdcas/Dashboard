@@ -10,6 +10,7 @@ import Bar_Chart from "./barChart";
 import RadialChart from "./radialChart";
 import ExampleTable from "./table";
 
+
 const Dashboard: FC = () => {
   return (
     <>
