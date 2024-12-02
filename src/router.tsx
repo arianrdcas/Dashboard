@@ -12,8 +12,8 @@ import BarChart from "./pages/BarChart/barChart";
 import PieChart from "./pages/PieChart/pieChart";
 import LineChart from "./pages/dashboard/lineChart";
 import GeographyChart from "./pages/GeographyChart/geographyChart";
-import LoginForm from "./pages/signIn";
-import RegisterForm from "./pages/signUp";
+import LoginForm from "./pages/Login/signIn";
+import RegisterForm from "./pages/Register/signUp";
 
 // Simulación de autenticación
 const isAuthenticated = true;
